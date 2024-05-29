@@ -47,6 +47,11 @@ const mainStyles = (theme) => ({
       display: 'none',
     },
   },
+  flexCenter: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default mainStyles;
