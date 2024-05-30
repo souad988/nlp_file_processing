@@ -8,17 +8,23 @@ const Styles = (theme) => ({
     fontSize: '1.3rem',
     fontWeight: 900,
   },
+  containerOutlined: {
+    backgroundColor: theme.palette.background.extra,
+  },
   box: {
-    backgroundColor: theme.palette.background.secondary,
-    borderRadius: '30px',
-    width: '30px',
-    height: '30px',
+    marginRight: '5px',
+  },
+  boxNotOutlined: {
+    backgroundColor: theme.palette.background.extra,
+    borderRadius: '34px',
+    width: '34px',
+    height: '34px',
   },
   boxOutlined: {
-    width: '30px',
-    height: '30px',
     border: `2px solid ${theme.palette.icon.main}`,
     borderRadius: '30px',
+    width: '30px',
+    height: '30px',
   },
   flexCenter: {
     display: 'flex',

@@ -27,6 +27,10 @@ const theme = createTheme({
     background: {
       main: colors.background,
       secondary: colors.inputBackground,
+      extra: colors.purple,
+    },
+    shadow: {
+      main: colors.shadow,
     },
   },
 });

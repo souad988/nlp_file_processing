@@ -6,6 +6,7 @@ const colors = {
   error: '#ff0000', // Error color
   background: '#f9f9f9', // General background color
   main: '#000000', // Button outline and text color
+  shadow: '#c8d3ce',
 };
 
 export default colors;

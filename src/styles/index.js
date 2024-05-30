@@ -10,8 +10,7 @@ const mainStyles = (theme) => ({
     margin: '10px',
   },
   shadow: {
-    boxShadow: `0px 0px 10px 0px ${theme.palette.background.main}`,
-    borderRadius: '15px',
+    boxShadow: `0px 0px 10px 0px ${theme.palette.shadow.main}`,
   },
   boxPadding: {
     padding: '1%',
@@ -52,6 +51,25 @@ const mainStyles = (theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  bold: {
+    fontWeight: 700,
+  },
+  extraBold: {
+    fontWeight: 900,
+  },
+  lineHeight: {
+    lineHeight: '0.40',
+  },
+  subtitle: {
+    color: theme.palette.icon.main,
+  },
+  fullWidth: {
+    width: '100%',
+  },
+  marginBottom: {
+    marginBottom: '3vh',
+  },
+
 });
 
 export default mainStyles;

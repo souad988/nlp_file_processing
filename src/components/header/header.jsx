@@ -12,10 +12,22 @@ function Header() {
   const mainClasses = useCustomStyles(mainStyles);
 
   return (
-    <Grid container className={clsx(classes.container, mainClasses.boxPadding)}>
+    <Grid container className={clsx(mainClasses.shadow, classes.container, mainClasses.boxPadding)}>
       <Grid item className={mainClasses.flexCenter}>
         <Logo />
-        <Typography variant="h5">planet</Typography>
+        <Grid container className={classes.logoTextContainer}>
+          <Grid item>
+            {' '}
+            <Typography variant="h4" className={clsx(mainClasses.extraBold, mainClasses.lineHeight)}>planet</Typography>
+          </Grid>
+          <Grid item container justifyContent="flex-end">
+            <Grid item><Typography variant="caption">Formerly</Typography></Grid>
+            <Grid item>
+              {' '}
+              <Typography variant="caption" className={clsx(mainClasses.bold, mainClasses.subtitle)}>Dphi</Typography>
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item><FileUpload /></Grid>
     </Grid>
