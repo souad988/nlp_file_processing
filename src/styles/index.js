@@ -8,10 +8,15 @@ const mainStyles = (theme) => ({
     fontWeight: '700',
     borderColor: theme.palette.btn.main,
     margin: '10px',
+    '&:hover': {
+      borderColor: theme.palette.btn.main,
+    },
+    '&:active': {
+      borderColor: theme.palette.btn.main,
+    },
   },
   shadow: {
-    boxShadow: `0px 0px 10px 0px ${theme.palette.background.main}`,
-    borderRadius: '15px',
+    boxShadow: `0px 0px 10px 0px ${theme.palette.shadow.main}`,
   },
   boxPadding: {
     padding: '1%',
@@ -21,6 +26,9 @@ const mainStyles = (theme) => ({
   },
   logo: {
     fontWeight: 900,
+  },
+  purple: {
+    color: theme.palette.background.extra,
   },
   error: {
     color: 'red',
@@ -47,6 +55,33 @@ const mainStyles = (theme) => ({
       display: 'none',
     },
   },
+  flexCenter: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bold: {
+    fontWeight: 700,
+  },
+  extraBold: {
+    fontWeight: 900,
+  },
+  lineHeight: {
+    lineHeight: '0.40',
+  },
+  subtitle: {
+    color: theme.palette.icon.main,
+  },
+  fullWidth: {
+    width: '100%',
+  },
+  marginBottom: {
+    marginBottom: '3vh',
+  },
+  displayNone: {
+    display: 'none',
+  },
+
 });
 
 export default mainStyles;

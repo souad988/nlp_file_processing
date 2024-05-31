@@ -1,10 +1,9 @@
-const Styles = (theme) => ({
+const Styles = () => ({
   container: {
     minWidth: '100%',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    boxShadow: `0px 0px 10px 0px ${theme.palette.main}`,
   },
   logo: {
     fontWeight: 900,
@@ -17,6 +16,9 @@ const Styles = (theme) => ({
   },
   displayNone: {
     display: 'none',
+  },
+  logoTextContainer: {
+    maxWidth: '87px',
   },
 });
 
