@@ -1,7 +1,7 @@
 
 <a name="readme-top"></a>
 
-  <h3><b>React frontend</b></h3>
+  <h3><b>NLP_file_processing frontend</b></h3>
 
 </div>
 
@@ -23,14 +23,13 @@
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Budget Tracker] <a name="about-project"></a>
+# 📖 [NLP FILE PROCESSING] <a name="about-project"></a>
 
-**[My New Rails App]** is a react web application that retreives random greetings from backenc api endpoint. 
+**[NLP FILE PROCESSING]** is a web application that allows users to perform question answering on their pdf files. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -47,8 +46,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Setup react]**
-- **[Add redux]**
+- **[Upload file]**
+- **[question answer]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -70,8 +69,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
   cd my-folder
-  git clone git@github.com:souad988/react_frontend.git
-
+  git clone git@github.com:souad988/nlp_file_processing.git
+  Add .env file to the root with the url to you backend server:  REACT_APP_BACKEND_URL=http://127.0.0.1:8000
 
 ### Install
 
@@ -100,13 +99,14 @@ To run the project, execute the following command:
 
 ### Backend Link
 
-https://github.com/souad988/rails_backend/pull/1
+https://github.com/souad988/nlp_file_processing_be
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Add Create messages feature]**
+- [ ] **[Add user authentication]**
+- [ ] **[Add multi tabs for old conversations]**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -126,14 +126,6 @@ Feel free to check the [issues page](../../issues/).
 ## ⭐️ Show your support <a name="support"></a>
 
 If you like this project please show your support by adding a star 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-I would like to thank the microverse community for there continous support and help. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
