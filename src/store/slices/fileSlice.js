@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { initializeQAndA } from './questionAnswerSlice';
 
 // Retrieve data from local storage or set default empty values
 const localData = JSON.parse(localStorage.getItem('fileData')) || {
@@ -9,14 +10,16 @@ const localData = JSON.parse(localStorage.getItem('fileData')) || {
 const { REACT_APP_BACKEND_URL } = process.env;
 
 // Async Thunk to upload a document
-export const uploadFile = createAsyncThunk('file/uploadFile', async (file, { rejectWithValue }) => {
-  console.log('env', REACT_APP_BACKEND_URL);
+export const uploadFile = createAsyncThunk('file/uploadFile', async (file, { dispatch, rejectWithValue }) => {
   const formData = new FormData();
   formData.append('file', file);
   try {
     const response = await axios.post(`${REACT_APP_BACKEND_URL}/uploadfile`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
+
+    // Initialize messages to [] to start a new conversation
+    dispatch(initializeQAndA());
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {

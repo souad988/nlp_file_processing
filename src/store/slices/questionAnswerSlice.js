@@ -2,14 +2,19 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Retrieve data from local storage or set default empty values
-const localData = JSON.parse(localStorage.getItem('docData')) || {
-  file: {}, answers: [], questions: [],
+const localData = JSON.parse(localStorage.getItem('fileData')) || {
+  file: null, answers: [], questions: [],
 };
 const { REACT_APP_BACKEND_URL } = process.env;
 
+export const addQuestion = (question) => ({
+  type: 'messages/addQuestion',
+  payload: question,
+});
+
 export const questionAnswer = createAsyncThunk('messages/questionAnswer', async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`${REACT_APP_BACKEND_URL}/questionAnswer`, { context: data.text, question: data.question }, {
+    const response = await axios.post(`${REACT_APP_BACKEND_URL}/question-answer`, { filename: localData.file.filename, question: data.question }, {
       headers: { 'Content-Type': 'application/json' },
     });
     return { answer: response.data.answer, question: data.question };
@@ -35,6 +40,9 @@ const questionAnswerSlice = createSlice({
     answers: localData.answers || [],
   },
   reducers: {
+    addQuestion: (state, action) => {
+      state.questions = [...state.questions, action.payload];
+    },
     initializeQAndA: (state, action) => {
       state.answers = action.payload;
       state.questions = action.payload;
@@ -48,11 +56,11 @@ const questionAnswerSlice = createSlice({
       })
       .addCase(questionAnswer.fulfilled, (state, action) => {
         // Update state when text summarization action succeeds
-        localStorage.setItem('docData', JSON.stringify(
+        localStorage.setItem('fileData', JSON.stringify(
           {
             ...localData,
             answers: [...state.answers, action.payload.answer],
-            questions: [...state.questions, action.payload.question],
+            questions: [...state.questions],
           },
         ));
         return {
@@ -60,7 +68,6 @@ const questionAnswerSlice = createSlice({
           loading: false,
           status: 'succeeded',
           answers: [...state.answers, action.payload.answer],
-          questions: [...state.questions, action.payload.question],
         };
       })
       .addCase(questionAnswer.rejected, (state, action) => ({
