@@ -1,7 +1,13 @@
 
 <a name="readme-top"></a>
 
-  <h3><b>NLP_file_processing frontend</b></h3>
+  <h3><b>NLP PDF PROCESSING frontend</b></h3>
+  
+![Screenshot from 2024-06-02 00-44-10](https://github.com/souad988/nlp_file_processing/assets/59707859/e3085af2-9ac0-4d76-b517-d0756185073e)
+
+![Screenshot from 2024-06-02 00-44-25](https://github.com/souad988/nlp_file_processing/assets/59707859/6db7812d-be82-4d4a-9e40-f3206362d449)
+
+
 
 </div>
 
