@@ -9,16 +9,22 @@ const localData = JSON.parse(localStorage.getItem('fileData')) || {
 const { REACT_APP_BACKEND_URL } = process.env;
 
 // Async Thunk to upload a document
-export const uploadFile = createAsyncThunk('file/uploadFile', async (file) => {
+export const uploadFile = createAsyncThunk('file/uploadFile', async (file, { rejectWithValue }) => {
   console.log('env', REACT_APP_BACKEND_URL);
   const formData = new FormData();
   formData.append('file', file);
-
-  // Upload the document using Axios POST request
-  const response = await axios.post(`${REACT_APP_BACKEND_URL}/uploadfile`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
-  return response.data;
+  try {
+    const response = await axios.post(`${REACT_APP_BACKEND_URL}/uploadfile`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return rejectWithValue({ message: error.response.data.error });
+    }
+    // Return a generic error message if no response data is available
+    return rejectWithValue({ message: 'An unknown error occurred' });
+  }
 });
 
 // Create a slice for managing document-related state
@@ -40,31 +46,34 @@ const fileSlice = createSlice({
       })
       .addCase(uploadFile.fulfilled, (state, action) => {
         // Update localStorage when document upload action succeeds
-        console.log('actions', action.payload);
+        const data = {
+          file: action.payload.file,
+          questions: [],
+          answers: [],
+        };
         localStorage.setItem('fileData', JSON.stringify(
           {
             ...localData,
-            file: action.payload,
-            questions: [],
-            answers: [],
+            ...data,
           },
         ));
-        toast.success(`Upload Successful: ${action.payload.filename} successfully uploaded!!`);
+        toast.success(`Upload Successful: ${action.payload.file.filename} successfully uploaded!!`);
         return {
           ...state,
+          ...data,
           loading: false,
           status: 'succeeded',
-          file: action.payload,
         };
       })
       .addCase(uploadFile.rejected, (state, action) => {
         // Update state when document upload action fails
-        toast.error(`Upload Failed: ${action.error.message}!!`);
+        const errorMessage = action.payload?.message || 'Upload Failed';
+        toast.error(`Upload Failed: ${errorMessage}!!`);
         return {
           ...state,
           loading: false,
           status: 'failed',
-          error: action.error.message,
+          error: errorMessage,
         };
       });
   },
