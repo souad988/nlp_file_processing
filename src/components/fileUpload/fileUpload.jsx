@@ -17,15 +17,13 @@ function FileUpload() {
   const classes = useCustomStyles(mainStyles);
   const dispatch = useDispatch();
   const {
-    file, status, loading, error,
+    file, loading,
   } = useSelector((state) => state.file);
 
   const [inputValue, setInputValue] = useState(null);
   const [inputError, setInputError] = useState(false);
   const [inputTouched, setInputTouched] = useState(false);
 
-  console.log('status,loading,error', status, loading, error);
-  console.log('inputError, touched,value,file', inputError, inputTouched, inputValue, file);
   const fileInputRef = useRef();
 
   const handleFileButtonClick = (fileInput) => {
@@ -57,7 +55,7 @@ function FileUpload() {
             <Grid item container flexWrap="nowrap" alignItems="center">
               {file && !inputTouched ? (
                 <>
-                  <Grid item>
+                  <Grid item display="flex" alignItems="center">
                     <InsertDriveFileOutlinedIcon
                       className={
                 clsx(classes.fileIcon)
@@ -65,13 +63,13 @@ function FileUpload() {
                     />
                   </Grid>
                   <Grid item>
-                    <Typography variant="h6" className={clsx(classes.success)}>
+                    <Typography variant="h6" className={clsx(classes.success, classes.hideOnMobile)}>
                       {file.filename}
                     </Typography>
                   </Grid>
                 </>
               )
-                : !inputError && (
+                : !inputError && inputValue && (
                   <Grid item>
                     <Typography variant="h6" className={clsx(classes.purple)}>
                       {inputValue.name}

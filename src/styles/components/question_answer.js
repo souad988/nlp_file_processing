@@ -19,6 +19,9 @@ const Styles = (theme) => ({
       outline: 'none',
     },
   },
+  submit: {
+    color: theme.palette.shadow.main,
+  },
 });
 
 export default Styles;

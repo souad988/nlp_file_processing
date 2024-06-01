@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import greetingsReducer from './slices/greetingsSlice';
+import questionAnswerReducer from './slices/questionAnswerSlice';
 import fileReducer from './slices/fileSlice';
 
 const store = configureStore({
   reducer: {
-    greetings: greetingsReducer,
+    questionAnswer: questionAnswerReducer,
     file: fileReducer,
   },
 });
